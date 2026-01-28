@@ -21,7 +21,7 @@ except ImportError:
             from ultralytics import YOLO
         except ImportError:
             st.error("Unable to import ultralytics library. Please ensure it is properly installed.")
-            st.error(f"Checked local path: {ultralytics_local_path}")
+            st.error("Checked local path: " + str(ultralytics_local_path))
             st.stop()
     else:
         st.error("Unable to import ultralytics library. Please ensure it is properly installed.")
