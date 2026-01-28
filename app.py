@@ -21,7 +21,12 @@ except ImportError:
             from ultralytics import YOLO
         except ImportError:
             st.error("Unable to import ultralytics library. Please ensure it is properly installed.")
-            st.error(f"Checked loca
+            st.error(f"Checked local path: {ultralytics_local_path}")
+            st.stop()
+    else:
+        st.error("Unable to import ultralytics library. Please ensure it is properly installed.")
+        st.error("Install with: pip install ultralytics>=8.1.0")
+        st.stop()
 
 # Page configuration
 st.set_page_config(
@@ -210,4 +215,5 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
