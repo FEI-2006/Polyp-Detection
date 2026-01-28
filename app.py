@@ -9,24 +9,13 @@ import numpy as np
 # Suppress FutureWarning from timm library
 warnings.filterwarnings("ignore", category=FutureWarning, module="timm.models.layers")
 
-# Try to import ultralytics - first try pip installed version, then local version
+# Import ultralytics from pip (required for Streamlit Cloud)
 try:
     from ultralytics import YOLO
 except ImportError:
-    # If pip version fails, try local ultralytics directory
-    ultralytics_local_path = Path(__file__).parent / "ultralytics-8.1.0"
-    if ultralytics_local_path.exists():
-        sys.path.insert(0, str(ultralytics_local_path))
-        try:
-            from ultralytics import YOLO
-        except ImportError:
-            st.error("Unable to import ultralytics library. Please ensure it is properly installed.")
-            st.error("Checked local path: " + str(ultralytics_local_path))
-            st.stop()
-    else:
-        st.error("Unable to import ultralytics library. Please ensure it is properly installed.")
-        st.error("Install with: pip install ultralytics>=8.1.0")
-        st.stop()
+    st.error("Unable to import ultralytics library. Please ensure it is properly installed.")
+    st.error("Install with: pip install ultralytics>=8.1.0")
+    st.stop()
 
 # Page configuration
 st.set_page_config(
